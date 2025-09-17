@@ -12,7 +12,6 @@
 		"url": "https://github.com/sachinraja/zod-to-ts/issues"
 	},
 	"main": "src/index.ts",
-	"types": "dist/index.d.ts",
 	"files": [
 		"dist"
 	],
