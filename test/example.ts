@@ -77,7 +77,7 @@ export const example = z.object({
 	p: z.optional(z.string()),
 	q: z.nullable(pickedSchema),
 	r: z.tuple([z.string(), z.number(), z.object({ name: z.string() })]),
-	s: z.record(z.object({
+	s: z.record(z.string(), z.object({
 		de: z.object({
 			me: z.union([z.tuple([z.string(), z.object({ a: z.string() })]), z.bigint()]).array(),
 		}),
@@ -86,7 +86,10 @@ export const example = z.object({
 	u: z.set(z.string()),
 	v: z.intersection(z.string(), z.number()).or(z.bigint()),
 	w: z.promise(z.number()),
-	x: z.function().args(z.string().nullish().default('heo'), z.boolean(), z.boolean()).returns(z.string()),
+	x: z.function({
+		input: z.tuple([z.string().nullish().default('heo'), z.boolean(), z.boolean()]),
+		output: z.string(),
+	}),
 	y: z.string().optional().default('hi'),
 	z: z.string().refine((value) => value.length > 10).or(z.number()).and(z.bigint().nullish().default(1000n)),
 	aa: nativeEnum,

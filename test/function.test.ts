@@ -4,9 +4,10 @@ import { zodToTs } from '../src'
 import { printNodeTest } from './utils'
 
 it('prints correct typescript', () => {
-	const schema = z.function().args(z.string().nullish().default('name'), z.boolean(), z.boolean()).returns(
-		z.string(),
-	)
+	const schema = z.function({
+		input: z.tuple([z.string().nullish().default('name'), z.boolean(), z.boolean()]),
+		output: z.string(),
+	})
 	const { node } = zodToTs(schema, 'Function')
 
 	expect(printNodeTest(node)).toMatchInlineSnapshot(
@@ -15,9 +16,9 @@ it('prints correct typescript', () => {
 })
 
 it('prints correct typescript 2', () => {
-	const schema = z.function().args(z.object({ name: z.string(), price: z.number(), comment: z.string() })).describe(
-		'create an item',
-	)
+	const schema = z.function({
+		input: z.tuple([z.object({ name: z.string(), price: z.number(), comment: z.string() })]),
+	}).describe('create an item')
 
 	const { node } = zodToTs(schema)
 

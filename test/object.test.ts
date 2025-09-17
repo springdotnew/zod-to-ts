@@ -14,8 +14,8 @@ it('supports string literal properties', () => {
 
 	expect(printNodeTest(node)).toMatchInlineSnapshot(`
 		"{
-		    \\"5\\": number;
-		    \\"string-literal\\": string;
+		    "5": number;
+		    "string-literal": string;
 		}"
 	`)
 })
@@ -55,15 +55,15 @@ it('escapes correctly', () => {
 
 	expect(printNodeTest(node)).toMatchInlineSnapshot(`
 		"{
-		    \\"\\\\\\\\\\": string;
-		    \\"\\\\\\"\\": string;
-		    \\"'\\": string;
-		    \\"\`\\": string;
-		    \\"\\\\n\\": number;
-		    \$e?: any;
-		    \\"4t\\"?: any;
+		    "\\\\": string;
+		    "\\"": string;
+		    "'": string;
+		    "\`": string;
+		    "\\n": number;
+		    $e?: any;
+		    "4t"?: any;
 		    _r?: any;
-		    \\"-r\\"?: undefined;
+		    "-r"?: undefined;
 		}"
 	`)
 })

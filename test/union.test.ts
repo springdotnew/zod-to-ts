@@ -15,13 +15,13 @@ describe('z.discriminatedUnion()', () => {
 	it('outputs correct typescript', () => {
 		expect(printNodeTest(node)).toMatchInlineSnapshot(`
 			"{
-			    kind: \\"circle\\";
+			    kind: "circle";
 			    radius: number;
 			} | {
-			    kind: \\"square\\";
+			    kind: "square";
 			    x: number;
 			} | {
-			    kind: \\"triangle\\";
+			    kind: "triangle";
 			    x: number;
 			    y: number;
 			}"

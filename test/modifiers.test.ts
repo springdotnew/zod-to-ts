@@ -33,7 +33,7 @@ describe('z.optional()', () => {
 			"{
 			    optional?: string | undefined;
 			    required: string;
-			    transform?: number | undefined;
+			    transform?: any;
 			    or?: (number | undefined) | string;
 			    tuple?: [
 			        string | undefined,

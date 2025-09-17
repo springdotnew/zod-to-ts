@@ -31,9 +31,9 @@ describe('Color enum', () => {
 
 		expect(printNodeTest(store.nativeEnums[0])).toMatchInlineSnapshot(`
 			"enum Color {
-			    \\"0\\" = \\"Red\\",
-			    \\"1\\" = \\"Green\\",
-			    \\"2\\" = \\"Blue\\",
+			    "0" = "Red",
+			    "1" = "Green",
+			    "2" = "Blue",
 			    Red = 0,
 			    Green = 1,
 			    Blue = 2
@@ -59,9 +59,9 @@ describe('Fruit enum', () => {
 
 		expect(printNodeTest(store.nativeEnums[0])).toMatchInlineSnapshot(`
 			"enum Fruit {
-			    Apple = \\"apple\\",
-			    Banana = \\"banana\\",
-			    Cantaloupe = \\"cantaloupe\\"
+			    Apple = "apple",
+			    Banana = "banana",
+			    Cantaloupe = "cantaloupe"
 			}"
 		`)
 	})
@@ -83,12 +83,12 @@ it('handles string literal properties', () => {
 
 	expect(printNodeTest(store.nativeEnums[0])).toMatchInlineSnapshot(`
 		"enum StringLiteral {
-		    \\"0\\" = \\"Two Words\\",
-		    \\"1\\" = \\"'Quotes\\\\\\"\\",
-		    \\"2\\" = \\"\\\\\\\\\\\\\\"Escaped\\\\\\\\\\\\\\"\\",
-		    \\"Two Words\\" = 0,
-		    \\"'Quotes\\\\\\"\\" = 1,
-		    \\"\\\\\\\\\\\\\\"Escaped\\\\\\\\\\\\\\"\\" = 2
+		    "0" = "Two Words",
+		    "1" = "'Quotes\\"",
+		    "2" = "\\\\\\"Escaped\\\\\\"",
+		    "Two Words" = 0,
+		    "'Quotes\\"" = 1,
+		    "\\\\\\"Escaped\\\\\\"" = 2
 		}"
 	`)
 })
@@ -102,7 +102,7 @@ describe('convertNativeEnumToUnion option', () => {
 		}
 		const schema = z.nativeEnum(Color)
 		const { node } = zodToTs(schema, undefined, { nativeEnums: 'union' })
-		expect(printNodeTest(node)).toMatchInlineSnapshot(`"\\"Red\\" | \\"Green\\" | \\"Blue\\" | 0 | 1 | 2"`)
+		expect(printNodeTest(node)).toMatchInlineSnapshot(`""Red" | "Green" | "Blue" | 0 | 1 | 2"`)
 	})
 
 	it('handles string enum', () => {
@@ -113,6 +113,6 @@ describe('convertNativeEnumToUnion option', () => {
 		}
 		const schema = z.nativeEnum(Fruit)
 		const { node } = zodToTs(schema, undefined, { nativeEnums: 'union' })
-		expect(printNodeTest(node)).toMatchInlineSnapshot(`"\\"apple\\" | \\"banana\\" | \\"cantaloupe\\""`)
+		expect(printNodeTest(node)).toMatchInlineSnapshot(`""apple" | "banana" | "cantaloupe""`)
 	})
 })
